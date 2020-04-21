@@ -1,0 +1,14 @@
+query Products($skus: [String]) {
+    viewer {
+        products(skus: $skus) {
+            id
+            name
+            image
+            price
+            priceFormated
+            lastPrice
+            sku
+            thumb
+        }
+    }
+}
