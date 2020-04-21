@@ -6,55 +6,64 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <!--
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
--->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:background="#FFDD20"
         android:orientation="vertical"
-        android:background="#FFDD20">
+        android:paddingTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:padding="10dp">
 
-            <ImageView
-                android:layout_gravity="start"
-                android:layout_width="100dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/elektra"/>
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"/>
-            <ImageView
-                android:layout_width="180dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="4"
+                    android:src="@drawable/elektra" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:paddingStart="-20dp"
+                    android:paddingEnd="-20dp"
+                    android:src="@drawable/creditoelektra" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/creditoelektra"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/profile"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/carrito_ico"/>
+                android:layout_weight="3"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="-20dp"
+                    android:paddingEnd="-20dp"
+                    android:src="@drawable/profile" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="-20dp"
+                    android:paddingEnd="-20dp"
+                    android:src="@drawable/carrito_ico" />
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -62,57 +71,56 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
 
             <ImageView
-                android:padding="5dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="#E1241B"
-                android:src="@drawable/menu"/>
+                android:padding="5dp"
+                android:src="@drawable/menu" />
 
             <EditText
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:id="@+id/buscarproducto"
+                android:maxLines="1"
+                android:minLines="1"
+                android:lines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:hint="Busca por producto, marca o departamento"
-                android:paddingEnd="5dp"
-                android:paddingStart="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:background="#FFFFFF"
-                android:textAppearance="@style/TextAppearance.AppCompat.Inverse"/>
+                android:hint="Busca por producto, marca o departamento"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Inverse" />
+
             <ImageView
-                android:padding="5dp"
-                android:background="#E1241B"
+                android:id="@+id/lupabuscar"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/lupa"/>
+                android:background="#E1241B"
+                android:padding="5dp"
+                android:src="@drawable/lupa" />
 
 
         </LinearLayout>
 
-        <!--<ListView
-            android:padding="10dp"
-            android:background="#FFFFFF"
-            android:id="@+id/recipe_list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>-->
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/slider"
-            android:background="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:background="#FFFFFF"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <ListView
-            android:background="#FFFFFF"
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#FFFFFF"
             app:behavior_overlapTop="30dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -121,15 +129,4 @@
 
     </LinearLayout>
 
-
-<!--
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
--->0
 </LinearLayout>

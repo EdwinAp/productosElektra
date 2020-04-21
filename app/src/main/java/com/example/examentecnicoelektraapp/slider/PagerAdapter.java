@@ -1,5 +1,6 @@
 package com.example.examentecnicoelektraapp.slider;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,17 +18,22 @@ import com.example.examentecnicoelektraapp.pojos.Producto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PagerAdapter extends androidx.viewpager.widget.PagerAdapter {
 
     private Context context;
-    private LayoutInflater layoutInflater;
     private List<Producto> imagenes;
 
     public PagerAdapter(Activity activity, List<ProductsQuery.Product> products) {
         this.context = activity.getApplicationContext();
         List<Producto> imagenes = new ArrayList<>();
-        for (ProductsQuery.Product producto : products) imagenes.add(new Producto("", producto.name(), producto.image(), producto.price().toString(), ""));
+        for (ProductsQuery.Product producto : products)
+            imagenes.add(
+                    new Producto("", Objects.requireNonNull(producto.name()), Objects.requireNonNull(producto.image()),
+                            Objects.requireNonNull(producto.price()).toString(), ""
+                    )
+            );
         this.imagenes = imagenes;
     }
 
@@ -46,11 +52,11 @@ public class PagerAdapter extends androidx.viewpager.widget.PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         //return super.instantiateItem(container, position);
 
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.custom_item_slide, null);
-        ImageView image = (ImageView) view.findViewById(R.id.imageslider);
-        TextView titulo = (TextView) view.findViewById(R.id.nameslider);
-        TextView price = (TextView) view.findViewById(R.id.priceslider);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        @SuppressLint("InflateParams") View view = layoutInflater.inflate(R.layout.custom_item_slide, null);
+        ImageView image = view.findViewById(R.id.imageslider);
+        TextView titulo =  view.findViewById(R.id.nameslider);
+        TextView price = view.findViewById(R.id.priceslider);
         titulo.setText(imagenes.get(position).getName());
         price.setText("$".concat(imagenes.get(position).getPrice()));
         Glide.with(context).load(imagenes.get(position).getImage()).into(image);
